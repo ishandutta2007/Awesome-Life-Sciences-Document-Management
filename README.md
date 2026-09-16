@@ -576,660 +576,331 @@ Integrated Architecture:
 
 ---
 
-
-
-
 # 🧩 Commercial Platform → Open-Source Equivalent
 
-
-
-| Commercial Platform                   | Open-Source Equivalent / Building Blocks                                           |
-
-| ------------------------------------- | ---------------------------------------------------------------------------------- |
-
-| **Veeva Vault QualityDocs**           | Mayan EDMS + Camunda/Flowable + Keycloak + PostgreSQL + electronic-signature layer |
-
-| **MasterControl Documents**           | Mayan EDMS + workflow engine + Keycloak + audit infrastructure                     |
-
-| **OpenText Documentum Life Sciences** | Alfresco CE / Mayan EDMS + workflow + records management + OpenSearch              |
-
-| **Qualio**                            | Mayan EDMS + workflow + Keycloak + e-signature + training module                   |
-
-| **Scilife**                           | Mayan EDMS + eLabFTW + workflow + identity + audit infrastructure                  |
-
-| **Sparta TrackWise**                  | Mayan EDMS + Camunda + PostgreSQL + quality-process modules                        |
-
-| **ComplianceQuest**                   | Mayan EDMS + workflow + ERP/QMS modules + Keycloak                                 |
-
-| **Dot Compliance**                    | Mayan EDMS + workflow + e-signature + audit layer                                  |
-
-| **Ennov DMS**                         | Mayan EDMS / Alfresco + workflow + records management                              |
-
-| **AMPLEXOR**                          | Alfresco + OpenSearch + workflow + localization/content tooling                    |
-
-| **Veeva QualityDocs + ELN**           | Mayan EDMS + eLabFTW + workflow + identity                                         |
-
-| **Documentum + LIMS**                 | Alfresco + SENAITE + OpenSearch                                                    |
-
-| **Life Sciences DMS**                 | Mayan EDMS + Camunda + Keycloak + PostgreSQL                                       |
-
-| **GxP Document Control**              | Mayan EDMS + workflow + audit log + e-signature                                    |
-
-| **Regulated Content Repository**      | Alfresco + OpenSearch + MinIO + Keycloak                                           |
-
-
+| Commercial Platform | Open-Source Equivalent / Building Blocks |
+| :--- | :--- |
+| **Veeva Vault QualityDocs** | Mayan EDMS + Camunda/Flowable + Keycloak + PostgreSQL + electronic-signature layer |
+| **MasterControl Documents** | Mayan EDMS + workflow engine + Keycloak + audit infrastructure |
+| **OpenText Documentum Life Sciences** | Alfresco CE / Mayan EDMS + workflow + records management + OpenSearch |
+| **Qualio** | Mayan EDMS + workflow + Keycloak + e-signature + training module |
+| **Scilife** | Mayan EDMS + eLabFTW + workflow + identity + audit infrastructure |
+| **Sparta TrackWise** | Mayan EDMS + Camunda + PostgreSQL + quality-process modules |
+| **ComplianceQuest** | Mayan EDMS + workflow + ERP/QMS modules + Keycloak |
+| **Dot Compliance** | Mayan EDMS + workflow + e-signature + audit layer |
+| **Ennov DMS** | Mayan EDMS / Alfresco + workflow + records management |
+| **AMPLEXOR** | Alfresco + OpenSearch + workflow + localization/content tooling |
+| **Veeva QualityDocs + ELN** | Mayan EDMS + eLabFTW + workflow + identity |
+| **Documentum + LIMS** | Alfresco + SENAITE + OpenSearch |
+| **Life Sciences DMS** | Mayan EDMS + Camunda + Keycloak + PostgreSQL |
+| **GxP Document Control** | Mayan EDMS + workflow + audit log + e-signature |
+| **Regulated Content Repository** | Alfresco + OpenSearch + MinIO + Keycloak |
 
 ---
-
-
 
 # 🏗️ Life Sciences DMS Architecture
 
-
-
 ```mermaid
-
 flowchart TD
-
-
 
     A[Life Sciences Users] --> B[Identity / SSO]
 
-
-
     B --> C[Document Management]
 
-
-
     C --> D[Document Repository]
-
     C --> E[Metadata]
-
     C --> F[Version Control]
-
     C --> G[Audit Trail]
-
-
 
     C --> H[Workflow Engine]
 
-
-
     H --> I[Author Review]
-
     H --> J[Quality Review]
-
     H --> K[Approval]
-
     H --> L[Periodic Review]
-
-
 
     K --> M[Electronic Signature]
 
-
-
     C --> N[Search]
 
-
-
     N --> O[OCR]
-
     N --> P[Full Text Search]
-
-
 
     C --> Q[Training]
 
-
-
     C --> R[Records Management]
-
-
 
     D --> S[Object Storage]
 
-
-
     C --> T[Reporting / Analytics]
-
 ```
 
-
-
 ---
-
-
 
 # 🔄 Open-Source GxP Document Architecture
 
-
-
 ```text
-
                        LIFE SCIENCES USER
-
                               │
-
                               ▼
-
                          KEYCLOAK / SSO
-
                               │
-
                               ▼
-
                      ┌───────────────────┐
-
                      │    MAYAN EDMS     │
-
                      │ / ALFRESCO / DMS  │
-
                      └─────────┬─────────┘
-
                                │
-
             ┌──────────────────┼──────────────────┐
-
             ▼                  ▼                  ▼
-
        Document Store      Metadata           Versioning
-
             │                  │                  │
-
             └──────────────────┼──────────────────┘
-
                                ▼
-
                         WORKFLOW ENGINE
-
                          Camunda / Flowable
-
                                │
-
               ┌────────────────┼────────────────┐
-
               ▼                ▼                ▼
-
            Review           Approval         Training
-
               │                │
-
               └────────────────┘
-
                        │
-
                        ▼
-
                  E-SIGNATURE
-
                        │
-
                        ▼
-
                   AUDIT TRAIL
-
                        │
-
                        ▼
-
                 RECORDS RETENTION
-
 ```
 
-
-
 ---
-
-
 
 # 📝 Controlled Document Lifecycle
 
-
-
 A typical controlled-document lifecycle can be represented as:
 
-
-
 ```mermaid
-
 stateDiagram-v2
-
-
 
     [*] --> Draft
 
-
-
     Draft --> AuthorReview
-
     AuthorReview --> Draft
-
     AuthorReview --> QualityReview
 
-
-
     QualityReview --> Draft
-
     QualityReview --> Approval
 
-
-
     Approval --> Draft
-
     Approval --> Effective
-
-
 
     Effective --> PeriodicReview
 
-
-
     PeriodicReview --> Effective
-
     PeriodicReview --> Revision
-
     PeriodicReview --> Obsolete
-
-
 
     Revision --> Draft
 
-
-
     Obsolete --> Archived
-
     Archived --> [*]
-
 ```
-
-
 
 Typical document states:
 
-
-
 ```text
-
 Draft
-
   ↓
-
 In Review
-
   ↓
-
 Quality Review
-
   ↓
-
 Approved
-
   ↓
-
 Effective
-
   ↓
-
 Periodic Review
-
   ↓
-
 Revised / Obsolete
-
   ↓
-
 Archived
-
 ```
 
-
-
 ---
-
-
 
 # 🔐 Controlled Document Security Model
 
-
-
 ```text
-
                          DOCUMENT
-
                             │
-
              ┌──────────────┼──────────────┐
-
              ▼              ▼              ▼
-
            Role          Department      Product
-
              │              │              │
-
              └──────────────┼──────────────┘
-
                             ▼
-
                      Authorization
-
                             │
-
              ┌──────────────┼──────────────┐
-
              ▼              ▼              ▼
-
            Read           Review          Approve
-
              │              │              │
-
              └──────────────┼──────────────┘
-
                             ▼
-
                        Audit Trail
-
 ```
 
-
-
 ---
-
-
 
 # 📚 Document Types in Life Sciences
 
-
-
 A comprehensive DMS can manage:
 
-
-
-| Category       | Examples                             |
-
-| -------------- | ------------------------------------ |
-
-| Quality        | SOPs, policies, quality manuals      |
-
-| Manufacturing  | Batch records, work instructions     |
-
-| Clinical       | Study documents, protocols           |
-
-| Regulatory     | Submission documents                 |
-
-| Laboratory     | Methods, procedures, specifications  |
-
-| Supplier       | Supplier qualification documents     |
-
-| Validation     | Validation plans, protocols, reports |
-
-| Engineering    | Equipment procedures                 |
-
-| Safety         | Safety procedures, risk assessments  |
-
-| Training       | Training materials, curricula        |
-
-| HR             | Controlled personnel procedures      |
-
-| IT             | Computer-system procedures           |
-
-| Data Integrity | Policies and controls                |
-
-| CAPA           | Investigation documents              |
-
-| Change Control | Change requests and assessments      |
-
-
+| Category | Examples |
+| :--- | :--- |
+| **Quality** | SOPs, policies, quality manuals |
+| **Manufacturing** | Batch records, work instructions |
+| **Clinical** | Study documents, protocols |
+| **Regulatory** | Submission documents |
+| **Laboratory** | Methods, procedures, specifications |
+| **Supplier** | Supplier qualification documents |
+| **Validation** | Validation plans, protocols, reports |
+| **Engineering** | Equipment procedures |
+| **Safety** | Safety procedures, risk assessments |
+| **Training** | Training materials, curricula |
+| **HR** | Controlled personnel procedures |
+| **IT** | Computer-system procedures |
+| **Data Integrity** | Policies and controls |
+| **CAPA** | Investigation documents |
+| **Change Control** | Change requests and assessments |
 
 ---
-
-
 
 # 🧠 Document Control Data Model
 
-
-
 A useful open-source implementation can model:
 
-
-
 ```text
-
 Document
-
 │
-
 ├── Document ID
-
 ├── Title
-
 ├── Type
-
 ├── Department
-
 ├── Product
-
 ├── Site
-
 ├── Version
-
 ├── Status
-
 ├── Effective Date
-
 ├── Review Date
-
 ├── Owner
-
 ├── Approvers
-
 ├── Related Training
-
 ├── Related CAPA
-
 ├── Related Change Control
-
 ├── Related Risk
-
 ├── Attachments
-
 ├── Audit Trail
-
 └── Signatures
-
 ```
-
-
 
 Relationships:
 
-
-
 ```text
-
                  Document
-
                     │
-
        ┌────────────┼────────────┐
-
        ▼            ▼            ▼
-
     Training       CAPA       Change Control
-
        │            │            │
-
        └────────────┼────────────┘
-
                     ▼
-
                   Audit
-
 ```
 
-
-
 ---
-
-
 
 # ⚖️ Commercial vs Open-Source
 
-
-
-| Capability              | Commercial Life Sciences DMS           | Open-Source Stack            |
-
-| ----------------------- | -------------------------------------- | ---------------------------- |
-
-| Document Repository     | ✅                                      | ✅                            |
-
-| Version Control         | ✅                                      | ✅                            |
-
-| Metadata                | ✅                                      | ✅                            |
-
-| Workflow                | ✅                                      | ✅                            |
-
-| Audit Trail             | ✅                                      | ✅                            |
-
-| Electronic Signatures   | ✅                                      | ⚠️ Build / integrate         |
-
-| GxP Configuration       | ✅                                      | Build                        |
-
-| Validation Package      | Usually available                      | Organization responsibility  |
-
-| 21 CFR Part 11 Support  | Product-specific                       | Must validate implementation |
-
-| EU Annex 11 Support     | Product-specific                       | Must validate implementation |
-
-| Training Management     | Usually integrated                     | Build / integrate            |
-
-| CAPA                    | Usually integrated                     | Build / integrate            |
-
-| Change Control          | Usually integrated                     | Build / integrate            |
-
-| Supplier Quality        | Often integrated                       | Build / integrate            |
-
-| Regulatory Content      | Often integrated                       | Build / integrate            |
-
-| LIMS Integration        | ✅                                      | Build / integrate            |
-
-| ELN Integration         | ✅                                      | Build / integrate            |
-
-| Self Hosting            | Varies                                 | ✅                            |
-
-| Source Code             | ❌                                      | Often available              |
-
-| Customization           | Configuration                          | Very High                    |
-
-| Data Ownership          | Vendor-dependent                       | Full control                 |
-
-| Infrastructure          | Managed                                | Self-managed                 |
-
-| Validation              | Vendor materials + customer validation | Customer responsibility      |
-
-| Regulatory Operations   | Vendor-supported                       | Customer responsibility      |
-
-| Vendor Lock-In          | Higher                                 | Lower                        |
-
-| Time to Deploy          | Faster                                 | Slower                       |
-
-| Engineering Requirement | Lower                                  | Higher                       |
-
-
+| Capability | Commercial Life Sciences DMS | Open-Source Stack |
+| :--- | :--- | :--- |
+| **Document Repository** | ✅ | ✅ |
+| **Version Control** | ✅ | ✅ |
+| **Metadata** | ✅ | ✅ |
+| **Workflow** | ✅ | ✅ |
+| **Audit Trail** | ✅ | ✅ |
+| **Electronic Signatures** | ✅ | ⚠️ Build / integrate |
+| **GxP Configuration** | ✅ | Build |
+| **Validation Package** | Usually available | Organization responsibility |
+| **21 CFR Part 11 Support** | Product-specific | Must validate implementation |
+| **EU Annex 11 Support** | Product-specific | Must validate implementation |
+| **Training Management** | Usually integrated | Build / integrate |
+| **CAPA** | Usually integrated | Build / integrate |
+| **Change Control** | Usually integrated | Build / integrate |
+| **Supplier Quality** | Often integrated | Build / integrate |
+| **Regulatory Content** | Often integrated | Build / integrate |
+| **LIMS Integration** | ✅ | Build / integrate |
+| **ELN Integration** | ✅ | Build / integrate |
+| **Self Hosting** | Varies | ✅ |
+| **Source Code** | ❌ | Often available |
+| **Customization** | Configuration | Very High |
+| **Data Ownership** | Vendor-dependent | Full control |
+| **Infrastructure** | Managed | Self-managed |
+| **Validation** | Vendor materials + customer validation | Customer responsibility |
+| **Regulatory Operations** | Vendor-supported | Customer responsibility |
+| **Vendor Lock-In** | Higher | Lower |
+| **Time to Deploy** | Faster | Slower |
+| **Engineering Requirement** | Lower | Higher |
 
 ---
-
-
 
 # 📊 Document Management Technology Comparison
 
-
-
-| Project           | DMS | Workflow | OCR |    Versioning    | API | Self-Host |
-
-| ----------------- | :-: | :------: | :-: | :--------------: | :-: | :-------: |
-
-| **Mayan EDMS**    |  ✅  |     ✅    |  ✅  |         ✅        |  ✅  |     ✅     |
-
-| **Alfresco CE**   |  ✅  |     ✅    |  ⚠️ |         ✅        |  ✅  |     ✅     |
-
-| **Paperless-ngx** |  ✅  |    ⚠️    |  ✅  |         ✅        |  ✅  |     ✅     |
-
-| **Docspell**      |  ✅  |    ⚠️    |  ✅  |         ✅        |  ✅  |     ✅     |
-
-| **SeedDMS**       |  ✅  |     ✅    |  ⚠️ |         ✅        |  ⚠️ |     ✅     |
-
-| **Teedy**         |  ✅  |    ⚠️    |  ✅  |         ✅        |  ✅  |     ✅     |
-
-| **Papermerge**    |  ✅  |    ⚠️    |  ✅  |         ✅        |  ⚠️ |     ✅     |
-
-| **eLabFTW**       |  ❌  |    ⚠️    |  ⚠️ | Research records |  ✅  |     ✅     |
-
-| **SENAITE**       |  ❌  |     ✅    |  ⚠️ |    Lab records   |  ✅  |     ✅     |
-
-| **openBIS**       |  ❌  |     ✅    |  ❌  |   Data records   |  ✅  |     ✅     |
-
-
+| Project | DMS | Workflow | OCR | Versioning | API | Self-Host |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Mayan EDMS** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Alfresco CE** | ✅ | ✅ | ⚠️ | ✅ | ✅ | ✅ |
+| **Paperless-ngx** | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ |
+| **Docspell** | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ |
+| **SeedDMS** | ✅ | ✅ | ⚠️ | ✅ | ⚠️ | ✅ |
+| **Teedy** | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ |
+| **Papermerge** | ✅ | ⚠️ | ✅ | ✅ | ⚠️ | ✅ |
+| **eLabFTW** | ❌ | ⚠️ | ⚠️ | Research records | ✅ | ✅ |
+| **SENAITE** | ❌ | ✅ | ⚠️ | Lab records | ✅ | ✅ |
+| **openBIS** | ❌ | ✅ | ❌ | Data records | ✅ | ✅ |
 
 ---
-
-
 
 # 🎯 Recommended Projects by Use Case
 
-
-
-| Use Case                         | Recommended Starting Point          |
-
-| -------------------------------- | ----------------------------------- |
-
-| General enterprise DMS           | **Mayan EDMS**                      |
-
-| Open-source controlled documents | **Mayan EDMS**                      |
-
-| Enterprise content management    | **Alfresco Community**              |
-
-| Lightweight DMS                  | **Teedy**                           |
-
-| OCR-heavy document archive       | **Paperless-ngx**                   |
-
-| Scientific laboratory records    | **eLabFTW**                         |
-
-| Laboratory management            | **SENAITE**                         |
-
-| Scientific data management       | **openBIS**                         |
-
-| Workflow orchestration           | **Camunda / Flowable**              |
-
-| Identity / SSO                   | **Keycloak**                        |
-
-| Authorization                    | **OPA / Casbin**                    |
-
-| Electronic signatures            | **DocuSeal / LibreSign**            |
-
-| OCR                              | **Tesseract / PaddleOCR**           |
-
-| PDF OCR                          | **OCRmyPDF**                        |
-
-| Document parsing                 | **Docling**                         |
-
-| Full-text search                 | **OpenSearch**                      |
-
-| Object storage                   | **MinIO**                           |
-
-| Database                         | **PostgreSQL**                      |
-
-| Audit observability              | **OpenTelemetry + Grafana**         |
-
-| Open-source GxP DMS foundation   | **Mayan EDMS + Camunda + Keycloak** |
-
-| Life Sciences research stack     | **eLabFTW + openBIS + Mayan EDMS**  |
-
-
+| Use Case | Recommended Starting Point |
+| :--- | :--- |
+| **General enterprise DMS** | **Mayan EDMS** |
+| **Open-source controlled documents** | **Mayan EDMS** |
+| **Enterprise content management** | **Alfresco Community** |
+| **Lightweight DMS** | **Teedy** |
+| **OCR-heavy document archive** | **Paperless-ngx** |
+| **Scientific laboratory records** | **eLabFTW** |
+| **Laboratory management** | **SENAITE** |
+| **Scientific data management** | **openBIS** |
+| **Workflow orchestration** | **Camunda / Flowable** |
+| **Identity / SSO** | **Keycloak** |
+| **Authorization** | **OPA / Casbin** |
+| **Electronic signatures** | **DocuSeal / LibreSign** |
+| **OCR** | **Tesseract / PaddleOCR** |
+| **PDF OCR** | **OCRmyPDF** |
+| **Document parsing** | **Docling** |
+| **Full-text search** | **OpenSearch** |
+| **Object storage** | **MinIO** |
+| **Database** | **PostgreSQL** |
+| **Audit observability** | **OpenTelemetry + Grafana** |
+| **Open-source GxP DMS foundation** | **Mayan EDMS + Camunda + Keycloak** |
+| **Life Sciences research stack** | **eLabFTW + openBIS + Mayan EDMS** |
 
 ---
-
-
 
 # 🏢 Building a Veeva QualityDocs Alternative
 
@@ -1537,129 +1208,66 @@ This is where a DMS begins to evolve toward an **eQMS / Quality Management platf
 
 # 🌐 Open-Source Life Sciences Document Landscape
 
-
-
 ```mermaid
-
 mindmap
-
   root((Life Sciences DMS))
-
     Document Management
-
       Mayan EDMS
-
       Alfresco
-
       SeedDMS
-
       Paperless-ngx
-
       Docspell
-
       Teedy
-
       Papermerge
-
     Scientific Documentation
-
       eLabFTW
-
       openBIS
-
       LabKey
-
     LIMS
-
       SENAITE
-
       OpenLIMS
-
       OpenSpecimen
-
     Workflow
-
       Camunda
-
       Flowable
-
       Temporal
-
       ProcessMaker
-
     Identity
-
       Keycloak
-
       Authentik
-
       OPA
-
       Casbin
-
     E-Signatures
-
       DocuSeal
-
       LibreSign
-
       DSS
-
     OCR
-
       Tesseract
-
       PaddleOCR
-
       OCRmyPDF
-
       Docling
-
     Search
-
       OpenSearch
-
       Elasticsearch
-
       Solr
-
     Storage
-
       MinIO
-
       S3
-
       PostgreSQL
-
     Observability
-
       OpenTelemetry
-
       Prometheus
-
       Grafana
-
     Life Sciences
-
       GxP
-
       GLP
-
       GMP
-
       GCP
-
       Quality
-
       Clinical
-
       Regulatory
-
       Manufacturing
-
 ```
-
-
 
 ---
 
