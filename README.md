@@ -2117,41 +2117,22 @@ This distinction is especially important in GxP environments.
 
 # 📈 Example Document-Control Metrics
 
-
-
 A Life Sciences DMS can expose metrics such as:
 
-
-
-| Metric                          | Example                   |
-
-| ------------------------------- | ------------------------- |
-
-| Documents by Status             | Draft / Review / Approved |
-
-| Approval Cycle Time             | Average days              |
-
-| Review Overdue                  | Count                     |
-
-| Documents Expiring              | Count                     |
-
-| Obsolete Documents              | Count                     |
-
-| Training Completion             | Percentage                |
-
-| Approval Bottlenecks            | By department             |
-
-| Document Revisions              | Per document              |
-
-| CAPA-linked Documents           | Count                     |
-
-| Change-Control-linked Documents | Count                     |
-
-| Audit Events                    | Count                     |
-
-| Signature Completion            | Percentage                |
-
-
+| Metric | Example |
+| :--- | :--- |
+| **Documents by Status** | Draft / Review / Approved |
+| **Approval Cycle Time** | Average days |
+| **Review Overdue** | Count |
+| **Documents Expiring** | Count |
+| **Obsolete Documents** | Count |
+| **Training Completion** | Percentage |
+| **Approval Bottlenecks** | By department |
+| **Document Revisions** | Per document |
+| **CAPA-linked Documents** | Count |
+| **Change-Control-linked Documents** | Count |
+| **Audit Events** | Count |
+| **Signature Completion** | Percentage |
 
 Example analytics architecture:
 
