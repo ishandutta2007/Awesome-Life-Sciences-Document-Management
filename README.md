@@ -158,7 +158,7 @@ Capabilities include:
 
 The project describes itself as a free and open-source enterprise-grade electronic document management system, with document controls, workflows and self-hosting capabilities. 🔒
 
-| Project | GitHub Stars ⭐ | Primary Role 🎯 | Open Source / License 📜 |
+| Project | GitHub_Stars ⭐ | Primary Role 🎯 | Open Source / License 📜 |
 | :--- | :--- | :--- | :---: |
 | [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) | [![Paperless-ngx Stars](https://img.shields.io/github/stars/paperless-ngx/paperless-ngx?style=social&color=white)](https://github.com/paperless-ngx/paperless-ngx/stargazers) | Document archive / OCR / DMS | ✅ GPLv3 |
 | [DocuSeal](https://github.com/docusealco/docuseal) | [![DocuSeal Stars](https://img.shields.io/github/stars/docusealco/docuseal?style=social&color=white)](https://github.com/docusealco/docuseal/stargazers) | Document signing & execution | ✅ MIT |
@@ -220,9 +220,9 @@ Life Sciences document control often needs to connect to: 🧪
 * Quality management systems (eQMS)
 * Scientific datasets & bio-repositories
 
-Useful open-source projects (sorted by GitHub Star count): ⭐
+Useful open-source projects (sorted by GitHub Stars_Count): ⭐
 
-| Project | GitHub Stars ⭐ | Primary Focus 🎯 | Relevance 💡 |
+| Project | GitHub_Stars ⭐ | Primary Focus 🎯 | Relevance 💡 |
 | :--- | :--- | :--- | :--- |
 | [Nextflow](https://github.com/nextflow-io/nextflow) | [![Nextflow Stars](https://img.shields.io/github/stars/nextflow-io/nextflow?style=social&color=white)](https://github.com/nextflow-io/nextflow/stargazers) | Scientific workflow execution | Reproducible scientific data pipelines |
 | [Galaxy](https://github.com/galaxyproject/galaxy) | [![Galaxy Stars](https://img.shields.io/github/stars/galaxyproject/galaxy?style=social&color=white)](https://github.com/galaxyproject/galaxy/stargazers) | Scientific workflow platform | Bioinformatics & computational analysis |
@@ -315,7 +315,7 @@ Controlled Documents
 
 # 🗂️ Open-Source Enterprise Content Management
 
-| Project | GitHub Stars ⭐ | Strength 🎯 |
+| Project | GitHub_Stars ⭐ | Strength 🎯 |
 | :--- | :--- | :--- |
 | [Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) | [![Paperless-ngx Stars](https://img.shields.io/github/stars/paperless-ngx/paperless-ngx?style=social&color=white)](https://github.com/paperless-ngx/paperless-ngx/stargazers) | Document archive & OCR ingestion |
 | [Alfresco Community](https://github.com/Alfresco/alfresco-community-repo) | [![Alfresco Stars](https://img.shields.io/github/stars/Alfresco/alfresco-community-repo?style=social&color=white)](https://github.com/Alfresco/alfresco-community-repo/stargazers) | Enterprise content management & CMIS |
@@ -363,9 +363,9 @@ Revision       Obsolete
 New Version
 ```
 
-Useful workflow engines (sorted by GitHub Star count): ⭐
+Useful workflow engines (sorted by GitHub Stars_Count): ⭐
 
-| Project | GitHub Stars ⭐ | Workflow Capability 🎯 |
+| Project | GitHub_Stars ⭐ | Workflow Capability 🎯 |
 | :--- | :--- | :--- |
 | [Apache Airflow](https://github.com/apache/airflow) | [![Airflow Stars](https://img.shields.io/github/stars/apache/airflow?style=social&color=white)](https://github.com/apache/airflow/stargazers) | Data workflow & ETL orchestration |
 | [n8n](https://github.com/n8n-io/n8n) | [![n8n Stars](https://img.shields.io/github/stars/n8n-io/n8n?style=social&color=white)](https://github.com/n8n-io/n8n/stargazers) | Low-code workflow automation |
@@ -383,9 +383,9 @@ For regulated document control, BPMN-oriented platforms such as Camunda or Flowa
 
 Electronic signatures are a critical component of 21 CFR Part 11 and EU Annex 11 regulated document workflows. ✒️
 
-Potential building blocks (sorted by GitHub Star count): ⭐
+Potential building blocks (sorted by GitHub Stars_Count): ⭐
 
-| Project | GitHub Stars ⭐ | Role 🎯 |
+| Project | GitHub_Stars ⭐ | Role 🎯 |
 | :--- | :--- | :--- |
 | [Nextcloud](https://github.com/nextcloud/server) | [![Nextcloud Stars](https://img.shields.io/github/stars/nextcloud/server?style=social&color=white)](https://github.com/nextcloud/server/stargazers) | Collaboration platform with signature integrations |
 | [DocuSeal](https://github.com/docusealco/docuseal) | [![DocuSeal Stars](https://img.shields.io/github/stars/docusealco/docuseal?style=social&color=white)](https://github.com/docusealco/docuseal/stargazers) | Self-hosted document signing platform |
@@ -422,9 +422,9 @@ Access Controls & Validation
 
 A controlled-document system needs granular access control (RBAC / ABAC) and 21 CFR Part 11 compliant re-authentication. 🔑
 
-Useful projects (sorted by GitHub Star count): ⭐
+Useful projects (sorted by GitHub Stars_Count): ⭐
 
-| Project | GitHub Stars ⭐ | Role 🎯 |
+| Project | GitHub_Stars ⭐ | Role 🎯 |
 | :--- | :--- | :--- |
 | [Keycloak](https://github.com/keycloak/keycloak) | [![Keycloak Stars](https://img.shields.io/github/stars/keycloak/keycloak?style=social&color=white)](https://github.com/keycloak/keycloak/stargazers) | Enterprise Identity Provider / SSO / OAuth2 / RBAC |
 | [Open Policy Agent (OPA)](https://github.com/open-policy-agent/opa) | [![OPA Stars](https://img.shields.io/github/stars/open-policy-agent/opa?style=social&color=white)](https://github.com/open-policy-agent/opa/stargazers) | Declarative policy & authorization engine |
@@ -507,9 +507,9 @@ Useful infrastructure building blocks: ⚙️
 
 Controlled documents often originate as scanned paper records, certificates of analysis, or legacy PDFs. 📄
 
-Useful projects (sorted by GitHub Star count): ⭐
+Useful projects (sorted by GitHub Stars_Count): ⭐
 
-| Project | GitHub Stars ⭐ | Primary Function 🎯 |
+| Project | GitHub_Stars ⭐ | Primary Function 🎯 |
 | :--- | :--- | :--- |
 | [Tesseract](https://github.com/tesseract-ocr/tesseract) | [![Tesseract Stars](https://img.shields.io/github/stars/tesseract-ocr/tesseract?style=social&color=white)](https://github.com/tesseract-ocr/tesseract/stargazers) | Open-source optical character recognition engine |
 | [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) | [![PaddleOCR Stars](https://img.shields.io/github/stars/PaddlePaddle/PaddleOCR?style=social&color=white)](https://github.com/PaddlePaddle/PaddleOCR/stargazers) | Multilingual OCR & document parsing toolkit |
