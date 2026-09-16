@@ -220,7 +220,7 @@ Life Sciences document control often needs to connect to: 🧪
 * Quality management systems (eQMS)
 * Scientific datasets & bio-repositories
 
-Useful open-source projects (sorted by GitHub Stars_Count): ⭐
+Useful open-source projects (sorted by GitHub_Stars_Count): ⭐
 
 | Project | GitHub_Stars ⭐ | Primary Focus 🎯 | Relevance 💡 |
 | :--- | :--- | :--- | :--- |
@@ -363,7 +363,7 @@ Revision       Obsolete
 New Version
 ```
 
-Useful workflow engines (sorted by GitHub Stars_Count): ⭐
+Useful workflow engines (sorted by GitHub_Stars_Count): ⭐
 
 | Project | GitHub_Stars ⭐ | Workflow Capability 🎯 |
 | :--- | :--- | :--- |
@@ -383,7 +383,7 @@ For regulated document control, BPMN-oriented platforms such as Camunda or Flowa
 
 Electronic signatures are a critical component of 21 CFR Part 11 and EU Annex 11 regulated document workflows. ✒️
 
-Potential building blocks (sorted by GitHub Stars_Count): ⭐
+Potential building blocks (sorted by GitHub_Stars_Count): ⭐
 
 | Project | GitHub_Stars ⭐ | Role 🎯 |
 | :--- | :--- | :--- |
@@ -422,7 +422,7 @@ Access Controls & Validation
 
 A controlled-document system needs granular access control (RBAC / ABAC) and 21 CFR Part 11 compliant re-authentication. 🔑
 
-Useful projects (sorted by GitHub Stars_Count): ⭐
+Useful projects (sorted by GitHub_Stars_Count): ⭐
 
 | Project | GitHub_Stars ⭐ | Role 🎯 |
 | :--- | :--- | :--- |
@@ -507,7 +507,7 @@ Useful infrastructure building blocks: ⚙️
 
 Controlled documents often originate as scanned paper records, certificates of analysis, or legacy PDFs. 📄
 
-Useful projects (sorted by GitHub Stars_Count): ⭐
+Useful projects (sorted by GitHub_Stars_Count): ⭐
 
 | Project | GitHub_Stars ⭐ | Primary Function 🎯 |
 | :--- | :--- | :--- |
